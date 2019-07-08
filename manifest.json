@@ -1,0 +1,59 @@
+{
+  "name": "Zoho Desk injector",
+  "version": "1.0",
+  "description": "Zoho Desk injector for inject desk into any website",
+  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "options_page": "options.html",
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "web_accessible_resources": [
+    "websites/5paisainject.js",
+    "websites/amazoninject.js",
+    "websites/appleinject.js",
+    "websites/microsoftinject.js"
+  ],
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["https://www.5paisa.com/*"],
+      "exclude_matches": ["https://www.5paisa.com/redirect/*"],
+      "run_at": "document_idle",
+      "js": ["websites/5paisainject.js"]
+    },
+    {
+      "matches": ["https://www.amazon.in/*"],
+      "exclude_matches": ["https://www.amazon.in/redirect*"],
+      "run_at": "document_idle",
+      "js": ["websites/amazoninject.js"]
+    },
+    {
+      "matches": ["https://www.microsoft.com/*"],
+      "exclude_matches": ["https://www.microsoft.com/redirect*"],
+      "run_at": "document_idle",
+      "js": ["websites/microsoftinject.js"]
+    },
+    {
+      "matches": ["https://www.apple.com/*"],
+      "exclude_matches": ["https://www.apple.com/redirect*"],
+      "run_at": "document_idle",
+      "js": ["websites/appleinject.js"]
+    }
+  ]
+}
